@@ -141,4 +141,18 @@ const moviesMocks = [
   },
 ];
 
-module.exports = { moviesMocks };
+function filteredMoviesMock(tag) {
+  return moviesMocks.filter((movie) => movie.tags.includes(tag));
+}
+
+class MoviesServiceMock {
+  async getMovies() {
+    return Promise.resolve(moviesMocks);
+  }
+
+  async createMovie() {
+    return Promise.resolve(moviesMocks[0]);
+  }
+}
+
+module.exports = { moviesMocks, filteredMoviesMock, MoviesServiceMock };
